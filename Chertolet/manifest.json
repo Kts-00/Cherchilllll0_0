@@ -1,0 +1,18 @@
+{
+  "Group": "Chertolyot",
+  "Name": "Adam",
+  "Version": "0.1.0",
+  "Description": "Adam - theatrical NPC for Eldheim",
+  "Authors": [
+    {
+      "Name": "Chertolyot"
+    }
+  ],
+  "Website": "",
+  "Dependencies": {},
+  "OptionalDependencies": {},
+  "LoadBefore": {},
+  "DisabledByDefault": false,
+  "IncludesAssetPack": false,
+  "SubPlugins": []
+}
