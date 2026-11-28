@@ -1,0 +1,57 @@
+if (!object.isMesh) return;
+
+            meshes++;
+
+            const geometry = object.geometry;
+
+            triangles += geometry.index
+              ? geometry.index.count / 3
+              : geometry.attributes.position.count / 3;
+          });
+
+          status.textContent =
+            "Модель загружена!\n\n" +
+            "Название: " + file.name + "\n" +
+            "Размер X: " + size.x.toFixed(2) + "\n" +
+            "Размер Y: " + size.y.toFixed(2) + "\n" +
+            "Размер Z: " + size.z.toFixed(2) + "\n" +
+            "Количество мешей: " + meshes + "\n" +
+            "Количество треугольников: " + triangles;
+
+          URL.revokeObjectURL(url);
+        },
+
+        undefined,
+
+        error => {
+          console.error(error);
+          status.textContent =
+            "Ошибка загрузки модели. Проверь формат файла.";
+
+          URL.revokeObjectURL(url);
+        }
+      );
+    });
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    window.addEventListener("resize", () => {
+      camera.aspect =
+        viewer.clientWidth / viewer.clientHeight;
+
+      camera.updateProjectionMatrix();
+
+      renderer.setSize(
+        viewer.clientWidth,
+        viewer.clientHeight
+      );
+    });
+  </script>
+</body>
+</html>
